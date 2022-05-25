@@ -39,5 +39,56 @@ internal class manageContacts
                     + "\nZip : " + info.zip + "\nPhone Number : " + info.phoneNumber + "\nE-mail : " + info.email);
         }
     }
+    public void edit()
+    {
+        Console.WriteLine("Enter First Name to edit");
+        string fname = Console.ReadLine();
+        contactModel editContact = contactlist.FirstOrDefault(x => x.firstName.ToLower() == fname.ToLower());
+        if (editContact != null)
+        {
+            Console.WriteLine("Choose Field to edit");
+            Console.WriteLine("1 - First Name");
+            Console.WriteLine("2 - Last Name");
+            Console.WriteLine("3 - Address");
+            Console.WriteLine("4 - City");
+            Console.WriteLine("6 - Zip");
+            Console.WriteLine("5 - State");
+            Console.WriteLine("7 - Phone Number");
+            Console.WriteLine("8 - E-mail");
+            int select = Convert.ToInt32(Console.ReadLine());
+            switch (select)
+            {
+                case 1:
+                    contact.firstName = Console.ReadLine();
+                    break;
+                case 2:
+                    contact.lastName = Console.ReadLine();
+                    break;
+                case 3:
+                    contact.address = Console.ReadLine();
+                    break;
+                case 4:
+                    contact.city = Console.ReadLine();
+                    break;
+                case 5:
+                    contact.state = Console.ReadLine();
+                    break;
+                case 6:
+                    contact.zip = Convert.ToInt32(Console.ReadLine());
+                    break;
+                case 7:
+                    contact.phoneNumber = Convert.ToInt64(Console.ReadLine());
+                    break;
+                case 8:
+                    contact.email = Console.ReadLine();
+                    break;
+            }
+            display();
+        }
+        else
+        {
+            Console.WriteLine("Name Missmatch");
+        }
+    }
 }
 

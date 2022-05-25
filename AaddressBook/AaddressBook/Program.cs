@@ -2,3 +2,4 @@
 manageContacts manage = new manageContacts();
 manage.inputDetails();
 manage.display();
+manage.edit();
