@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 internal class manageContacts
     {
     List<contactModel> contactlist = new List<contactModel>();
@@ -113,6 +114,28 @@ internal class manageContacts
             inputDetails();
             count--;
         }
+    }
+    public void dictionary()
+    {
+        Dictionary<string, List<contactModel>> dictionary = new Dictionary<string, List<contactModel>>();
+        Console.WriteLine("Enter Number of Group to Add");
+        int groupCount = Convert.ToInt32(Console.ReadLine());
+        while (groupCount > 0)
+        {
+            Console.WriteLine("Enter Group Name");
+            string groupName = Console.ReadLine();
+            multipleContact();
+            dictionary.Add(groupName, contactlist);
+            groupCount--;
+        }
+        foreach (var gname in dictionary.Keys)
+        {
+            foreach (var contacts in dictionary[gname])
+            {
+                Console.WriteLine("Group Name : " + gname + "\nContacts : " + contacts.firstName);
+            }
+        }
+
     }
 }
 
