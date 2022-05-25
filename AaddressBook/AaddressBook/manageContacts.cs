@@ -43,7 +43,7 @@ internal class manageContacts
     {
         Console.WriteLine("Enter First Name to edit");
         string fname = Console.ReadLine();
-        contactModel editContact = contactlist.FirstOrDefault(x => x.firstName.ToLower() == fname.ToLower());
+        contactModel editContact = contactlist.FirstOrDefault(x => x.firstName == fname);
         if (editContact != null)
         {
             Console.WriteLine("Choose Field to edit");
@@ -59,28 +59,28 @@ internal class manageContacts
             switch (select)
             {
                 case 1:
-                    contact.firstName = Console.ReadLine();
+                    editContact.firstName = Console.ReadLine();
                     break;
                 case 2:
-                    contact.lastName = Console.ReadLine();
+                    editContact.lastName = Console.ReadLine();
                     break;
                 case 3:
-                    contact.address = Console.ReadLine();
+                    editContact.address = Console.ReadLine();
                     break;
                 case 4:
-                    contact.city = Console.ReadLine();
+                    editContact.city = Console.ReadLine();
                     break;
                 case 5:
-                    contact.state = Console.ReadLine();
+                    editContact.state = Console.ReadLine();
                     break;
                 case 6:
-                    contact.zip = Convert.ToInt32(Console.ReadLine());
+                    editContact.zip = Convert.ToInt32(Console.ReadLine());
                     break;
                 case 7:
-                    contact.phoneNumber = Convert.ToInt64(Console.ReadLine());
+                    editContact.phoneNumber = Convert.ToInt64(Console.ReadLine());
                     break;
                 case 8:
-                    contact.email = Console.ReadLine();
+                    editContact.email = Console.ReadLine();
                     break;
             }
             display();
@@ -103,6 +103,16 @@ internal class manageContacts
             }
         }
         display();
+    }
+    public void multipleContact()
+    {
+        Console.WriteLine("Enter Number of Contacts to Create");
+        int count = Convert.ToInt32(Console.ReadLine());
+        while (count > 0)
+        {
+            inputDetails();
+            count--;
+        }
     }
 }
 
