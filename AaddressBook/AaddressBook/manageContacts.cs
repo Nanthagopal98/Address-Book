@@ -90,5 +90,19 @@ internal class manageContacts
             Console.WriteLine("Name Missmatch");
         }
     }
+    public void deleteContact()
+    {
+        Console.WriteLine("Enter First Name to Delete Contact");
+        string fname = Console.ReadLine();
+        //contact deleteContact = contactlist.FirstOrDefault(x => x.firstName.ToLower() == fname);
+        foreach (var input in contactlist.ToList())
+        {
+            if (input.firstName == fname)
+            {
+                contactlist.Remove(input);
+            }
+        }
+        display();
+    }
 }
 
