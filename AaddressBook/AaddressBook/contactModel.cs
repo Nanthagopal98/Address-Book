@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AaddressBook
-{
-    internal class contactModel
+
+    public class contactModel
     {
         public string firstName { get; set; }
         public string lastName { get; set; }
@@ -17,4 +16,4 @@ namespace AaddressBook
         public Int64 phoneNumber { get; set; }
         public string email { get; set; }
     }
-}
+
