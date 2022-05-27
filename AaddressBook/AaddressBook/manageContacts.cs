@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 internal class manageContacts
     {
-    List<contactModel> contactlist = new List<contactModel>();
+    List<contactModel> contactlist;
     contactModel contact;
     public void inputDetails()
     {
+        
         contact = new contactModel();
         Console.WriteLine("Enter First Name");
         contact.firstName = Console.ReadLine();
@@ -109,8 +110,10 @@ internal class manageContacts
     {
         Console.WriteLine("Enter Number of Contacts to Create");
         int count = Convert.ToInt32(Console.ReadLine());
+        contactlist = new List<contactModel>();
         while (count > 0)
         {
+            
             inputDetails();
             count--;
         }
@@ -125,15 +128,18 @@ internal class manageContacts
             Console.WriteLine("Enter Group Name");
             string groupName = Console.ReadLine();
             multipleContact();
-            dictionary.Add(groupName, contactlist);
+            dictionary.Add(groupName, contactlist.ToList());
             groupCount--;
         }
+        
         foreach (var gname in dictionary.Keys)
         {
-            foreach (var contacts in dictionary[gname])
+            Console.WriteLine(gname);
+            foreach (contactModel name in dictionary[gname])
             {
-                Console.WriteLine("Group Name : " + gname + "\nContacts : " + contacts.firstName);
+                Console.WriteLine(name.firstName);
             }
+            
         }
 
     }

@@ -4,7 +4,7 @@ Console.WriteLine("Enter 1 To Create Contact");
 Console.WriteLine("Enter 2 To Create Contact & Edit");
 Console.WriteLine("Enter 3 To Create, Edit & Delete Contact");
 Console.WriteLine("Enter 4 To Create Multiple Contact then Edit & Delete Contact");
-Console.WriteLine("Enter 5 To Create, Edit & Delete Contact");
+Console.WriteLine("Enter 5 To Create a Contact group then creat, Edit & Delete Contact");
 int select =Convert.ToInt32(Console.ReadLine());
 
 switch (select)
