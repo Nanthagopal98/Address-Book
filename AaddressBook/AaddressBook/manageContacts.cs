@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 internal class manageContacts
     {
-    List<contactModel> contactlist;
+    List<contactModel> contactlist = new List<contactModel>();
     contactModel contact;
     public void inputDetails()
     {

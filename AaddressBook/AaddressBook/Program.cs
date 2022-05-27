@@ -11,6 +11,7 @@ switch (select)
 {
     case 1:
         manage.inputDetails();
+        manage.display();
         break;
     case 2:
         manage.inputDetails();
