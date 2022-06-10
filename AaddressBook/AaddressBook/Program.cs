@@ -5,6 +5,7 @@ Console.WriteLine("Enter 2 To Create Contact & Edit");
 Console.WriteLine("Enter 3 To Create, Edit & Delete Contact");
 Console.WriteLine("Enter 4 To Create Multiple Contact then Edit & Delete Contact");
 Console.WriteLine("Enter 5 To Create a Contact group then creat, Edit & Delete Contact");
+Console.WriteLine("Enter 6 Search Contact");
 int select =Convert.ToInt32(Console.ReadLine());
 
 switch (select)
@@ -30,7 +31,23 @@ switch (select)
         break;
     case 5:
         manage.dictionary();
+        manage.FindContactByCity();
         manage.edit();
         manage.deleteContact();
         break;
+    case 6:
+        Console.WriteLine("Enter 1 To Find Contact By City");
+        Console.WriteLine("Enter 1 To Find Contact By State");
+        int option = Convert.ToInt32(Console.ReadLine());
+        switch (option)
+        {
+            case 1:
+                manage.FindContactByCity();
+                break;
+            case 2:
+                manage.FindContactByState();
+                break;
+        }
+        break;
+
 }

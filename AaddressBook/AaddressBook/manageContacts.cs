@@ -9,6 +9,7 @@ internal class manageContacts
     {
     List<contactModel> contactlist = new List<contactModel>();
     contactModel contact;
+    Dictionary<string, List<contactModel>> book = new Dictionary<string, List<contactModel>>();
     public void inputDetails()
     {
         contact = new contactModel();
@@ -129,8 +130,7 @@ internal class manageContacts
         }
     }
     public void dictionary()
-    {
-        Dictionary<string, List<contactModel>> book = new Dictionary<string, List<contactModel>>();
+    {        
         Console.WriteLine("Enter Number of Group to Add");
         int groupCount = Convert.ToInt32(Console.ReadLine());
         while (groupCount > 0)
@@ -151,6 +151,37 @@ internal class manageContacts
             }           
         }
     }
-   
+    public void FindContactByCity()
+    {
+        dictionary();
+        Console.WriteLine("Enter City to Find Contact");
+        string checkCity = Console.ReadLine();
+        foreach (var gname in book)
+        {
+            Console.WriteLine("Group Name : "+ gname.Key);
+            foreach (var find in gname.Value.FindAll(e => (e.city.Equals(checkCity))).ToList())
+            {
+                Console.WriteLine("First Name : " + find.firstName + "\nLast Name : " + find.lastName +
+                    "\nAddress : " + find.address + "\nCity : " + find.city + "\nState : " + find.state
+                    + "\nZip : " + find.zip + "\nPhone Number : " + find.phoneNumber + "\nE-mail : " + find.email);
+            }
+        }
+    }
+    public void FindContactByState()
+    {
+        dictionary();
+        Console.WriteLine("Enter State to Find Contact");
+        string checkCity = Console.ReadLine();
+        foreach (var gname in book)
+        {
+            Console.WriteLine("Group Name : " + gname.Key);
+            foreach (var find in gname.Value.FindAll(e => (e.state.Equals(checkCity))).ToList())
+            {
+                Console.WriteLine("First Name : " + find.firstName + "\nLast Name : " + find.lastName +
+                    "\nAddress : " + find.address + "\nCity : " + find.city + "\nState : " + find.state
+                    + "\nZip : " + find.zip + "\nPhone Number : " + find.phoneNumber + "\nE-mail : " + find.email);
+            }
+        }
+    }
 }
 
