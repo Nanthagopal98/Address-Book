@@ -113,9 +113,26 @@ internal class manageContacts
         contactlist = new List<contactModel>();
         while (count > 0)
         {
-            
-            inputDetails();
-            count--;
+            if (contactlist.Count == 0)
+            {
+                inputDetails();
+                count--;
+            }
+            else
+            {
+                Console.WriteLine("Enter First Name");
+                string check = Console.ReadLine();
+
+                if (contactlist.Any(e => (e.firstName.Equals(check))))
+                {
+                    Console.WriteLine("First Name Exists");
+                }
+                else
+                {
+                    inputDetails();
+                    count--;
+                }
+            }
         }
     }
     public void dictionary()

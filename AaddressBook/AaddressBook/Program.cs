@@ -24,8 +24,9 @@ switch (select)
         break;
     case 4:
         manage.multipleContact();
-        manage.edit();
-        manage.deleteContact();
+        manage.display();
+        //manage.edit();
+        //manage.deleteContact();
         break;
     case 5:
         manage.dictionary();
