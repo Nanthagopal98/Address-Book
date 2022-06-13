@@ -8,6 +8,7 @@ Console.WriteLine("Enter 5 To Create a Contact group then creat, Edit & Delete C
 Console.WriteLine("Enter 6 Search Contact");
 Console.WriteLine("Enter 7 To Display Contact By State");
 Console.WriteLine("Enter 8 To Display Contact By City");
+Console.WriteLine("Enter 9 To Display Contact By City");
 int select =Convert.ToInt32(Console.ReadLine());
 
 switch (select)
@@ -39,7 +40,7 @@ switch (select)
         break;
     case 6:
         Console.WriteLine("Enter 1 To Find Contact By City");
-        Console.WriteLine("Enter 1 To Find Contact By State");
+        Console.WriteLine("Enter 2 To Find Contact By State");
         int option = Convert.ToInt32(Console.ReadLine());
         switch (option)
         {
@@ -57,6 +58,21 @@ switch (select)
     case 8:
         manage.DisplayContactByCity();
         break;
+    case 9:
+        Console.WriteLine("Enter 1 To Find Number of Contact By City");
+        Console.WriteLine("Enter 2 To Find Number of Contact By State");
+        int option1 = Convert.ToInt32(Console.ReadLine());
+        switch (option1)
+        {
+            case 1:
+                manage.FindNumberOfContactsByCity();
+                break;
+            case 2:
+                manage.FindNumberOfContactsByState();
+                break;
+        }
+        break;
+
 
 
 
