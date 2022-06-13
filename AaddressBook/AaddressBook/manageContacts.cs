@@ -12,6 +12,7 @@ internal class manageContacts
     Dictionary<string, List<contactModel>> book = new Dictionary<string, List<contactModel>>();
     Dictionary<string, List<contactModel>> bookByState = new Dictionary<string, List<contactModel>>();
     Dictionary<string, List<contactModel>> bookByCity = new Dictionary<string, List<contactModel>>();
+
     public void inputDetails()
     {
         contact = new contactModel();
@@ -143,7 +144,6 @@ internal class manageContacts
             book.Add(groupName, contactlist.ToList());
             groupCount--;
         }
-
         foreach (var gname in book.Keys)
         {
             Console.WriteLine(gname);
@@ -155,11 +155,9 @@ internal class manageContacts
     }
     public void FindContactByCity()
     {
-
         dictionary();
         Console.WriteLine("Enter City to Find Contact");
         string checkCity = Console.ReadLine();
-
         foreach (var gname in book)
         {
             Console.WriteLine("Group Name : " + gname.Key);
@@ -191,10 +189,10 @@ internal class manageContacts
     {
         dictionary();
         List<string> contacts = new List<string>();
-        
+
         foreach (var key in book.Keys)
         {
-            foreach(var value in book[key])
+            foreach (var value in book[key])
             {
                 if (bookByState.ContainsKey(value.state))
                 {
@@ -202,42 +200,40 @@ internal class manageContacts
                 }
                 else
                 {
-                    // contacts = new List<string>(value.firstName);
-                    bookByState.Add(value.state, new List<contactModel>() { value});
+                    bookByState.Add(value.state, new List<contactModel>() { value });
                 }
             }
         }
-        foreach(var key in bookByState.Keys)
+        foreach (var key in bookByState.Keys)
         {
             Console.WriteLine("State " + key);
 
             bookByState[key].ForEach(x => Console.WriteLine(x.firstName));
-            
         }
     }
     public void DisplayContactByCity()
     {
         dictionary();
         List<string> contacts = new List<string>();
-        
+
         foreach (var key in book.Keys)
         {
 
-            
+
             foreach (var value in book[key])
             {
-                
+
                 if (bookByCity.ContainsKey(value.city))
                 {
                     bookByCity[value.city].Add(value);
                 }
                 else
-                {                   
+                {
                     bookByCity.Add(value.city, new List<contactModel>() { value });
                 }
-            }            
+            }
         }
-        
+
         foreach (var key in bookByCity.Keys)
         {
             Console.WriteLine("City " + key);
@@ -252,12 +248,12 @@ internal class manageContacts
         int count = 0;
         foreach (var key in bookByCity.Keys)
         {
-            foreach(var values in bookByCity[key])
+            foreach (var values in bookByCity[key])
             {
                 count++;
             }
-            Console.WriteLine(key + " City Contains "+count+ " Contacts");
-            count = 0; 
+            Console.WriteLine(key + " City Contains " + count + " Contacts");
+            count = 0;
         }
     }
     public void FindNumberOfContactsByState()
@@ -273,6 +269,44 @@ internal class manageContacts
             Console.WriteLine(key + " State Contains " + count + " Contacts");
             count = 0;
         }
+    }
+    public void WriteFile()
+    {
+        string filePath = @"D:\Bridgelabz\.Net\Address-Book\AaddressBook\AaddressBook\Contacts File.txt";
+        dictionary();
+        using (StreamWriter write = File.AppendText(filePath))
+        {
+            foreach (var gname in book.Keys)
+            {
+                write.WriteLine(gname);
+                foreach (contactModel name in book[gname])
+                {
+                    write.WriteLine("First Name : " + name.firstName + "\nLast Name : " + name.lastName +
+                     "\nAddress : " + name.address + "\nCity : " + name.city + "\nState : " + name.state
+                     + "\nZip : " + name.zip + "\nPhone Number : " + name.phoneNumber + "\nE-mail : " + name.email);
+                    write.WriteLine("===============================");
+                }
+
+                write.WriteLine("===============================");
+            }
+        }
+    }
+    public void ReadFile()
+    {
+        string filePath = @"D:\Bridgelabz\.Net\Address-Book\AaddressBook\AaddressBook\Contacts File.txt";
+        if (File.Exists(filePath))
+        {
+            string[] readFile = File.ReadAllLines(filePath);
+            foreach (string lines in readFile)
+            {
+                if (lines != null)
+                {
+                    Console.WriteLine(lines);
+                }
+            }
+            return;
+        }
+        Console.WriteLine("File Not Found");
     }
 }
     

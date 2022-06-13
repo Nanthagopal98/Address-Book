@@ -1,0 +1,41 @@
+﻿
+friends
+First Name : Nantha
+Last Name : shan
+Address : My Address
+City : Coimbatore
+State : tamlinadu
+Zip : 123456
+Phone Number : 789456123
+E-mail : nantha@gmail.com
+===============================
+First Name : Ela
+Last Name : Appu
+Address : Ela Address
+City : Salem
+State : Tamilnadu
+Zip : 123456
+Phone Number : 789456123
+E-mail : ela@gmail.com
+===============================
+===============================
+Famliy
+First Name : Mom
+Last Name : dad
+Address : My Address
+City : Coimbatore
+State : tamilnadu
+Zip : 123456
+Phone Number : 789456123
+E-mail : mom@gmail.com
+===============================
+First Name : dad
+Last Name : mom
+Address : My Address
+City : coimbatore
+State : Tamilnadu
+Zip : 123456
+Phone Number : 789456123
+E-mail : dad@gmail.com
+===============================
+===============================
