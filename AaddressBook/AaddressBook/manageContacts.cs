@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 
 internal class manageContacts
-    {
+{
     List<contactModel> contactlist = new List<contactModel>();
     contactModel contact;
     Dictionary<string, List<contactModel>> book = new Dictionary<string, List<contactModel>>();
@@ -26,7 +26,7 @@ internal class manageContacts
             {
                 status = false;
             }
-        }       
+        }
         Console.WriteLine("Enter Last Name");
         contact.lastName = Console.ReadLine();
         Console.WriteLine("Enter Address");
@@ -130,7 +130,7 @@ internal class manageContacts
         }
     }
     public void dictionary()
-    {        
+    {
         Console.WriteLine("Enter Number of Group to Add");
         int groupCount = Convert.ToInt32(Console.ReadLine());
         while (groupCount > 0)
@@ -141,24 +141,26 @@ internal class manageContacts
             book.Add(groupName, contactlist.ToList());
             groupCount--;
         }
-        
+
         foreach (var gname in book.Keys)
         {
             Console.WriteLine(gname);
             foreach (contactModel name in book[gname])
             {
                 Console.WriteLine(name.firstName);
-            }           
+            }
         }
     }
     public void FindContactByCity()
     {
+
         dictionary();
         Console.WriteLine("Enter City to Find Contact");
         string checkCity = Console.ReadLine();
+
         foreach (var gname in book)
         {
-            Console.WriteLine("Group Name : "+ gname.Key);
+            Console.WriteLine("Group Name : " + gname.Key);
             foreach (var find in gname.Value.FindAll(e => (e.city.Equals(checkCity))).ToList())
             {
                 Console.WriteLine("First Name : " + find.firstName + "\nLast Name : " + find.lastName +
@@ -183,5 +185,63 @@ internal class manageContacts
             }
         }
     }
+    public void DisplayContactByState()
+    {
+        dictionary();
+        List<string> contacts = new List<string>();
+        Dictionary<string, List<contactModel>> bookByCity = new Dictionary<string, List<contactModel>>();
+        foreach (var key in book.Keys)
+        {
+            foreach(var value in book[key])
+            {
+                if (bookByCity.ContainsKey(value.state))
+                {
+                    bookByCity[value.city].Add(value);
+                }
+                else
+                {
+                   // contacts = new List<string>(value.firstName);
+                    bookByCity.Add(value.state, new List<contactModel>() { value});
+                }
+            }
+        }
+        foreach(var key in bookByCity.Keys)
+        {
+            Console.WriteLine("City " + key);
+
+            bookByCity[key].ForEach(x => Console.WriteLine(x.firstName));
+            
+        }
+    }
+    public void DisplayContactByCity()
+    {
+        dictionary();
+        List<string> contacts = new List<string>();
+        Dictionary<string, List<contactModel>> bookByCity = new Dictionary<string, List<contactModel>>();
+        foreach (var key in book.Keys)
+        {
+            foreach (var value in book[key])
+            {
+                if (bookByCity.ContainsKey(value.city))
+                {
+                    bookByCity[value.city].Add(value);
+                }
+                else
+                {
+                    
+                    bookByCity.Add(value.city, new List<contactModel>() { value });
+                }
+            }
+        }
+        foreach (var key in bookByCity.Keys)
+        {
+            Console.WriteLine("City " + key);
+
+            bookByCity[key].ForEach(x => Console.WriteLine(x.firstName));
+
+        }
+    }
 }
+    
+    
 

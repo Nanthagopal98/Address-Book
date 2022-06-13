@@ -6,6 +6,8 @@ Console.WriteLine("Enter 3 To Create, Edit & Delete Contact");
 Console.WriteLine("Enter 4 To Create Multiple Contact then Edit & Delete Contact");
 Console.WriteLine("Enter 5 To Create a Contact group then creat, Edit & Delete Contact");
 Console.WriteLine("Enter 6 Search Contact");
+Console.WriteLine("Enter 7 To Display Contact By State");
+Console.WriteLine("Enter 8 To Display Contact By City");
 int select =Convert.ToInt32(Console.ReadLine());
 
 switch (select)
@@ -49,5 +51,13 @@ switch (select)
                 break;
         }
         break;
+    case 7:
+        manage.DisplayContactByState();
+        break;
+    case 8:
+        manage.DisplayContactByCity();
+        break;
+
+
 
 }
