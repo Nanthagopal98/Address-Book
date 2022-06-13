@@ -10,6 +10,7 @@ Console.WriteLine("Enter 7 To Display Contact By State");
 Console.WriteLine("Enter 8 To Display Contact By City");
 Console.WriteLine("Enter 9 To Display Contact By City");
 Console.WriteLine("Enter 10 To Read And Write using txt file");
+Console.WriteLine("Enter 11 To Read And Write using CSV file");
 int select =Convert.ToInt32(Console.ReadLine());
 
 switch (select)
@@ -75,5 +76,11 @@ switch (select)
         manage.WriteFile();
         manage.ReadFile();
         break;
+    case 11:
+        manage.WriteCSVFile();
+        manage.ReadCSVFile();
+        break;
         
+
+
 }
