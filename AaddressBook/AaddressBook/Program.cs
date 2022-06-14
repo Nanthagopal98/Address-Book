@@ -11,6 +11,7 @@ Console.WriteLine("Enter 8 To Display Contact By City");
 Console.WriteLine("Enter 9 To Display Contact By City");
 Console.WriteLine("Enter 10 To Read And Write using txt file");
 Console.WriteLine("Enter 11 To Read And Write using CSV file");
+Console.WriteLine("Enter 12 To Read And Write using JSON file");
 int select =Convert.ToInt32(Console.ReadLine());
 
 switch (select)
@@ -80,7 +81,10 @@ switch (select)
         manage.WriteCSVFile();
         manage.ReadCSVFile();
         break;
-        
+    case 12:
+        //manage.Serialization();
+        manage.Deserialization();
+        break;
 
 
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 
 internal class manageContacts
@@ -334,17 +335,39 @@ internal class manageContacts
         string filePath = @"D:\Bridgelabz\.Net\Address-Book\AaddressBook\AaddressBook\Contacts File.csv";
         if (File.Exists(filePath))
         {
-            string[] readFile = File.ReadAllLines(filePath);
-            foreach (string lines in readFile)
-            {
-                if (lines != null)
-                {
-                    Console.WriteLine(lines);
-                }
-            }
+            string readFile = File.ReadAllText(filePath);          
+            Console.WriteLine(readFile);
             return;
         }
         Console.WriteLine("File Not Found");
+    }
+    public void Serialization()
+    {
+        dictionary();
+        string filePath = @"D:\Bridgelabz\.Net\Address-Book\AaddressBook\AaddressBook\Contact Details.json";
+        string json = JsonConvert.SerializeObject(book);
+        File.WriteAllText(filePath, json);
+    }
+    public void Deserialization()
+    {
+        string filePath = @"D:\Bridgelabz\.Net\Address-Book\AaddressBook\AaddressBook\Contact Details.json";
+        using (StreamReader reader = new StreamReader(filePath))
+        {
+            var json = reader.ReadToEnd();
+            var item = JsonConvert.DeserializeObject<Dictionary<string, List<contactModel>>>(json);            
+            foreach (var key in item.Keys)
+            {
+                Console.WriteLine(key);
+                foreach (var items in item[key])
+                {
+                    Console.WriteLine("First Name : " + items.firstName + "\nLast Name : " + items.lastName +
+                         "\nAddress : " + items.address + "\nCity : " + items.city + "\nState : " + items.state
+                         + "\nZip : " + items.zip + "\nPhone Number : " + items.phoneNumber + "\nE-mail : " + items.email);
+                    Console.WriteLine("===============================");
+                }
+                Console.WriteLine("===============================");
+            }
+        }
     }
 }
     
